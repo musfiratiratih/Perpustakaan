@@ -32,6 +32,7 @@ app.get("/", (req,res) => {
         }
     })
 })
+app.use("/autentikasi", require('./routes/autentikasi.routes'));
 app.use("/buku", require('./routes/buku.routes'));
 
 const port = 8000;
