@@ -1,7 +1,7 @@
 'use strict'
 
 const express = require('express');
-const booksController = require('../controllers/books.controller');
+const booksController = require('../controllers/buku.controllers');
 const router = new express.Router();
 
 router.get("/", booksController.index)

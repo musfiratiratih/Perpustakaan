@@ -5,7 +5,7 @@ const db = require('../db')
 module.exports = {
     index: (req, res) => {
         //create sql query
-        let sql = "select * from perpustakaan"
+        let sql = "select * from buku"
     
         //run query
         db.query(sql,(err, result) => {
@@ -18,7 +18,7 @@ module.exports = {
     },
 
     detail: (req, res) => {
-        const sql = "select * from perpustakaan where id = ? limit 1";
+        const sql = "select * from buku where id = ? limit 1";
 
         db.query(sql, req.params.id, (err, result) => {
             if (err) throw err;
@@ -33,12 +33,12 @@ module.exports = {
     create: (req, res) => {
         //deklarasi variabel inputan user
         const book = {
-            title: req.body.title,
-            year: req.body.year,
+            judul: req.body.judul,
+            tahun: req.body.tahun,
         }
         
         //create sql query
-        const sql = "insert into perpustakaan set ?"
+        const sql = "insert into buku set ?"
     
         //run query to insert the book
         db.query(sql, book, (err, result) => {
@@ -52,11 +52,11 @@ module.exports = {
 
     edit: (req, res) => {
         const book = {
-            title: req.body.title,
-            year: req.body.year
+            judul: req.body.judul,
+            tahun: req.body.tahun
         }
 
-        const sql = 'update perpustakaan set ? where id = ?'
+        const sql = 'update buku set ? where id = ?'
         db.query(sql, [book, req.params.id], (err, result) => {
             if (err) throw err
 
@@ -68,7 +68,7 @@ module.exports = {
     },
 
     delete: (req, res) => {
-        const sql = 'delete from perpustakaan where id = ?'
+        const sql = 'delete from buku where id = ?'
         db.query(sql, req.params.id, (err, result) => {
             if (err) throw err
             res.json({

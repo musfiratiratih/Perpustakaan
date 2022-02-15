@@ -32,7 +32,7 @@ app.get("/", (req,res) => {
         }
     })
 })
-app.use("/books", require('./routes/books.route'));
+app.use("/buku", require('./routes/buku.routes'));
 
 const port = 8000;
 app.listen(port, () => console.log (`App running ${port}`))
